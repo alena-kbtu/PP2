@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Daniil",
+        "email": "danya@gmail.com",
+        "birthday": "2008-10-22",
+        "group": "Family",
+        "phones": [
+            {
+                "phone": "87011234567",
+                "type": "home"
+            }
+        ]
+    },
+    {
+        "name": "Vicktoria",
+        "email": "vicks06@gmail.com",
+        "birthday": "2006-08-05",
+        "group": "Friend",
+        "phones": [
+            {
+                "phone": "87045007979",
+                "type": "mobile"
+            },
+            {
+                "phone": "87274765050",
+                "type": "work"
+            }
+        ]
+    }
+]

@@ -1,0 +1,62 @@
+[
+    {
+        "name": "alena",
+        "score": 769,
+        "distance":4590,
+        "coins": 38
+    },
+    {
+        "name": "daniil",
+        "score": 650,
+        "distance": 3960,
+        "coins": 29
+    },
+    {
+        "name": "oleg",
+        "score": 412,
+        "distance": 2800,
+        "coins": 18
+    },
+    {
+        "name": "alena",
+        "score": 328,
+        "distance": 2490,
+        "coins": 12
+    },
+    {
+        "name": "arina",
+        "score": 305,
+        "distance": 2000,
+        "coins": 15
+    },
+    {
+        "name": "victorya",
+        "score": 247,
+        "distance": 1870,
+        "coins": 10
+    },
+    {
+        "name": "daniil",
+        "score": 200,
+        "distance": 1201,
+        "coins": 9
+    },
+    {
+        "name": "varya",
+        "score": 143,
+        "distance": 940,
+        "coins": 6
+    },
+    {
+        "name": "sonya",
+        "score": 140,
+        "distance": 924,
+        "coins": 5
+    },
+    {
+        "name": "alena",
+        "score": 50,
+        "distance": 420,
+        "coins": 1
+    }
+]
