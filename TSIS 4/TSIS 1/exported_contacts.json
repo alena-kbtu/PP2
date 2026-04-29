@@ -1,0 +1,66 @@
+[
+    {
+        "name": "Daniil",
+        "email": "danya@gmail.com",
+        "birthday": "2008-10-22",
+        "group": "Family",
+        "phones": [
+            {
+                "phone": "87011234567",
+                "type": "home"
+            }
+        ]
+    },
+    {
+        "name": "Vicktoria",
+        "email": "vicks06@gmail.com",
+        "birthday": "2006-08-05",
+        "group": "Friend",
+        "phones": [
+            {
+                "phone": "87045007979",
+                "type": "mobile"
+            },
+            {
+                "phone": "87274765050",
+                "type": "work"
+            }
+        ]
+    },
+    {
+        "name": "ALena",
+        "email": "alena@gmail.com",
+        "birthday": "2007-11-29",
+        "group": "Family",
+        "phones": [
+            {
+                "phone": "87003041041",
+                "type": "mobile"
+            }
+        ]
+    },
+    {
+        "name": "Victoria",
+        "email": "vicks06@gmail.com",
+        "birthday": "2006-08-05",
+        "group": "Friend",
+        "phones": [
+            {
+                "phone": "87089754040",
+                "type": "home"
+            }
+        ]
+    },
+    {
+        "name": "Oleg",
+        "email": "oleg@company.com",
+        "birthday": "2002-10-14",
+        "group": "Work",
+        "phones": [
+            {
+                "phone": "87078907070",
+                "type": "work"
+            }
+        ]
+    }
+]
