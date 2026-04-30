@@ -18,6 +18,12 @@
         "coins": 29
     },
     {
+        "name": "san",
+        "score": 581,
+        "distance": 3214,
+        "coins": 26
+    },
+    {
         "name": "alena",
         "score": 473,
         "distance": 2133,
@@ -52,11 +58,5 @@
         "score": 217,
         "distance": 1170,
         "coins": 10
-    },
-    {
-        "name": "a;",
-        "score": 217,
-        "distance": 1079,
-        "coins": 11
     }
 ]

@@ -1,80 +1,85 @@
 import pygame
+import sys
 from ui import main_menu, username_screen, leaderboard_screen, settings_screen, game_over_screen
 from racer import run_game
 from persistence import load_settings
 
+class RacerApp:
+    def __init__(self):
+        pygame.init()
+        self.WIDTH = 500
+        self.HEIGHT = 700
+        self.screen = pygame.display.set_mode((self.WIDTH, self.HEIGHT))
+        pygame.display.set_caption("TSIS 3 Racer Game")
+        
+        self.clock = pygame.time.Clock()
+        self.settings = load_settings()
+        self.running = True
 
-def main():
-    pygame.init()
+    def start_game(self):
+        username = username_screen(self.screen, self.clock)
 
-    screen = pygame.display.set_mode((500, 700))
-    pygame.display.set_caption("TSIS 3 Racer Game")
+        if username is None:
+            self.running = False
+            return
 
-    clock = pygame.time.Clock()
+        game_result, score, distance, coins = run_game(
+            self.screen,
+            self.clock,
+            username,
+            self.settings
+        )
 
-    settings = load_settings()
+        if game_result == "quit":
+            self.running = False
+        elif game_result == "game_over":
+            self.handle_game_over(score, distance, coins, username)
 
-    running = True
+    def handle_game_over(self, score, distance, coins, username):
+        over_action = game_over_screen(
+            self.screen,
+            self.clock,
+            score,
+            distance,
+            coins
+        )
 
-    while running:
-        action = main_menu(screen, clock)
+        if over_action == "quit":
+            self.running = False
+        elif over_action == "retry":
 
-        if action == "quit":
-            running = False
+            game_result, score, distance, coins = run_game(
+                self.screen,
+                self.clock,
+                username,
+                self.settings
+            )
+            if game_result == "game_over":
+                self.handle_game_over(score, distance, coins, username)
+        elif over_action == "menu":
+            pass 
 
-        elif action == "play":
-            username = username_screen(screen, clock)
+    def run(self):
+        while self.running:
+            action = main_menu(self.screen, self.clock)
 
-            if username is None:
-                running = False
-            else:
-                game_result, score, distance, coins = run_game(
-                    screen,
-                    clock,
-                    username,
-                    settings
-                )
+            if action == "quit":
+                self.running = False
 
-                if game_result == "quit":
-                    running = False
+            elif action == "play":
+                self.start_game()
 
-                elif game_result == "game_over":
-                    over_action = game_over_screen(
-                        screen,
-                        clock,
-                        score,
-                        distance,
-                        coins
-                    )
+            elif action == "leaderboard":
+                if leaderboard_screen(self.screen, self.clock) == "quit":
+                    self.running = False
 
-                    if over_action == "quit":
-                        running = False
+            elif action == "settings":
+                if settings_screen(self.screen, self.clock, self.settings) == "quit":
+                    self.running = False
 
-                    elif over_action == "retry":
-                        game_result, score, distance, coins = run_game(
-                            screen,
-                            clock,
-                            username,
-                            settings
-                        )
-
-                    elif over_action == "menu":
-                        pass
-
-        elif action == "leaderboard":
-            result = leaderboard_screen(screen, clock)
-
-            if result == "quit":
-                running = False
-
-        elif action == "settings":
-            result = settings_screen(screen, clock, settings)
-
-            if result == "quit":
-                running = False
-
-    pygame.quit()
-
+        pygame.quit()
+        sys.exit()
 
 if __name__ == "__main__":
-    main()
+    app = RacerApp()
+    app.run()
