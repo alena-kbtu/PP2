@@ -6,6 +6,12 @@
         "coins": 28
     },
     {
+        "name": "dan",
+        "score": 1210,
+        "distance": 5001,
+        "coins": 21
+    },
+    {
         "name": "arina",
         "score": 643,
         "distance": 3538,
@@ -52,11 +58,5 @@
         "score": 217,
         "distance": 1079,
         "coins": 11
-    },
-    {
-        "name": "katya",
-        "score": 182,
-        "distance": 1320,
-        "coins": 5
     }
 ]

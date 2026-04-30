@@ -19,14 +19,12 @@ LANES = [135, 250, 365]
 FINISH_DISTANCE = 5000
 
 
-# ---------- LOAD IMAGE ----------
 def load_image(name, size):
     path = os.path.join("assets", name)
     image = pygame.image.load(path).convert_alpha()
     return pygame.transform.scale(image, size)
 
 
-# ---------- PLAYER ----------
 class Player:
     def __init__(self):
         
@@ -65,8 +63,6 @@ class Player:
         screen.blit(self.image, self.rect)
 
 
-
-# ---------- ENEMY ----------
 class EnemyCar:
     def __init__(self, speed, player):
         self.image = load_image("enemycar.png", (60, 90))
@@ -87,7 +83,6 @@ class EnemyCar:
         screen.blit(self.image, self.rect)
 
 
-# ---------- COIN ----------
 class Coin:
     def __init__(self):
         self.image = load_image("coin.png", (40, 40))
@@ -103,7 +98,6 @@ class Coin:
         screen.blit(self.image, self.rect)
 
 
-# ---------- OBSTACLE ----------
 class Obstacle:
     def __init__(self, kind, player):
         self.kind = kind
@@ -129,7 +123,6 @@ class Obstacle:
         screen.blit(self.image, self.rect)
 
 
-# ---------- POWER UP ----------
 class PowerUp:
     def __init__(self):
         self.kind = random.choice(["nitro", "shield", "repair"])
@@ -158,14 +151,12 @@ class PowerUp:
         return pygame.time.get_ticks() - self.spawn_time > self.timeout
 
 
-# ---------- TEXT ----------
 def draw_text(screen, text, size, color, x, y):
     font = pygame.font.SysFont("Arial", size)
     img = font.render(text, True, color)
     screen.blit(img, (x, y))
 
 
-# ---------- GAME ----------
 def run_game(screen, clock, username, settings):
     road = load_image("road.png", (WIDTH, HEIGHT))
 
@@ -199,7 +190,7 @@ def run_game(screen, clock, username, settings):
         distance += speed // 2
         score = coin_count * 10 + distance // 10
 
-        # road scroll
+
         y1 += speed
         y2 += speed
 
@@ -218,7 +209,6 @@ def run_game(screen, clock, username, settings):
         player.move()
         player.draw(screen)
 
-        # ENEMIES
         for enemy in enemies[:]:
             enemy.update(speed)
             enemy.draw(screen)
@@ -237,7 +227,6 @@ def run_game(screen, clock, username, settings):
                     add_score(username, score, distance, coin_count)
                     return "game_over", score, distance, coin_count
 
-        # COINS
         for coin in coins[:]:
             coin.update(speed)
             coin.draw(screen)
@@ -251,7 +240,6 @@ def run_game(screen, clock, username, settings):
                 coins.remove(coin)
                 coins.append(Coin())
 
-        # OBSTACLES
         for obs in obstacles[:]:
             obs.update(speed)
             obs.draw(screen)
@@ -275,7 +263,7 @@ def run_game(screen, clock, username, settings):
             else:
                 player.speed = 6
 
-        # POWERUPS
+
         for p in powerups[:]:
             p.update(speed)
             p.draw(screen)
@@ -303,13 +291,12 @@ def run_game(screen, clock, username, settings):
                 powerups.remove(p)
                 powerups.append(PowerUp())
 
-        # nitro timer
         if nitro:
             if pygame.time.get_ticks() - power_start > power_duration:
                 nitro = False
                 active_power = None
 
-        # UI
+        
         draw_text(screen, f"Score: {score}", 22, WHITE, 10, 10)
         draw_text(screen, f"Coins: {coin_count}", 22, WHITE, 10, 40)
         draw_text(screen, f"Distance: {distance}", 22, WHITE, 10, 70)

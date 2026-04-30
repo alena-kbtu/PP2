@@ -36,11 +36,11 @@ YELLOW = (255, 255, 0)
 ORANGE = (255, 165, 0)
 PURPLE = (160, 32, 240)
 
-current_color = WHITE
+current_color = BLACK
 
 
 canvas = pygame.Surface((WIDTH, HEIGHT))
-canvas.fill(BLACK)
+canvas.fill(WHITE)
 
 font = pygame.font.SysFont("Arial", 26)
 small_font = pygame.font.SysFont("Arial", 18)
